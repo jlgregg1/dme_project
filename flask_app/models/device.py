@@ -20,10 +20,18 @@ class Device:
         self.updated_at = data['updated_at']
 
     @staticmethod
-    def validate_device():
-        pass
+    def validate_device(form_data):
+        is_valid = True
+        if len(form_data['comments']) < 10: 
+            flash("Comments must be 10 or more characters")
+            is_valid = False
+        if len(form_data['zip_code']) != 5:
+            flash("Must enter a 5-digit zip-code")
+        return is_valid
 
     @classmethod
-    def add_to_db():
-        pass
+    def add_to_db(cls, data):
+        query = "INSERT INTO devices (type, zip_code, comments, user_id) VALUES (%(type)s, %(zip_code)s, %(comments)s, %(user_id)s);"
+        return connectToMySQL(cls.db).query_db(query, data)
+
 

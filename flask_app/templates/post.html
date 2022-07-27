@@ -28,15 +28,19 @@
         <div class="row">
             <div class="col-4">
                 <h1>Add a Device</h1>
-                <form action = "/add_to_db/" method = "POST">
+                <form action = "/add_to_db" method = "POST">
                     <div class="mb-3">
                         <label for="type" class="form-label">Device Type (select):</label>
                         <select name = 'type' class="form-control" id="type">
-                            <option value = "front-wheeled walker">front_wheeled walker</option>
+                            <option value = "front-wheeled walker">front-wheeled walker</option>
                             <option value = "four-wheeled walker">four-wheeled walker</option>
-                            <option value = "single-point cane">single-point_cane</option>
+                            <option value = "single-point cane">single-point cane</option>
                             <option value = "quad cane">quad cane</option>
                             <option value = "wheelchair">wheelchair</option>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comments" class="form-label">Comments (size, weight-capacity, etc):</label>
+                        <textarea class="form-control" id="comments" rows="3" name = "comments"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="zip_code" class="form-label">zip_code:</label>
