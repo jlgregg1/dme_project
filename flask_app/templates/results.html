@@ -27,36 +27,20 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h1>Edit A Painting</h1>
-                <form action = "/paintings/{{this_painting.id}}/edit_in_db" method = "POST">
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Title:</label>
-                        <input type="text" class="form-control" id="title" name = "title" value = "{{this_painting.title}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" id="description" rows="3" name = "description">{{this_painting.description}}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price:</label>
-                        <input type="number" class="form-control" id="price" name = "price" value = "{{this_painting.price}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity:</label>
-                        <input type="number" class="form-control" id="quantity" name = "quantity" value = "{{this_painting.quantity}}">
-                    </div>
-                    <div class = "mb-3">
-                        <button class = "btn btn-success" value = "submit">Update</button>
-                    </div>
-                </form>
-                {% with messages = get_flashed_messages() %} 
-                    {% if messages %}
-                        {% for message in messages %}
-                            <p>{{message}}</p>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
+            <div class="col-6">
+                <h2>Available Devices:</h2>
+                <ul>
+                    {% for this_device in all_device_results %}
+                        {% if all_device_results | length == 0 %}
+                        <p>No Devices to Show</p>
+                        {% else %}
+                        <li>
+                        <p>{{this_device.type}}</p>
+                        <p>{{this_device.zip_code}}</p>
+                        </li>
+                        {%endif%}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

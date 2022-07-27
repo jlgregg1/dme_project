@@ -17,11 +17,15 @@ def post():
         return redirect ("/")
     return render_template("post.html")
 
-@app.route("/results")
-def results():
+@app.route("/find_device", methods = ["GET", "POST"])
+def find_device():
     if "user_id" not in session: #do not allow access to create page if not logged in (if user ID not in session)
         return redirect ("/")
-    return render_template("results.html")
+    data = {
+        "type" : request.form['type'],
+        'zip_code' : request.form['zip_code']
+    }
+    return render_template("results.html", all_device_results = device.Device.search_results(data))
 
 @app.route("/edit/<int:id>")
 def edit(id):
@@ -33,9 +37,6 @@ def edit(id):
     return render_template("edit.html") #will need to pass in correct device info
 
 #hidden
-@app.route("/find_device", methods = ["POST"])
-def find_device():
-    pass
 
 @app.route("/edit_in_db/<int:id>", methods = ['POST'])
 def edit_in_db(id):
@@ -63,10 +64,16 @@ def add_to_db():
     device.Device.add_to_db(data)
     return redirect('/dashboard')
 
-@app.route("/add_to_saved_devices")
-def add_to_saved_devices():
-    pass
-    # return redirect("/dashboard")
+@app.route("/add_to_saved_devices/<int:id>") #need to add a link in the HTML results page
+def save_device_in_list(id):
+    if 'user_id' not in session:
+        return redirect("/")
+    data = {
+        'user_id' : session['user_id'],
+        'device_id' : id
+    }
+    device.Device.save_device_in_list(data)
+    return redirect("/dashboard")
 
 @app.route("/delete_from_db")
 def delete_from_db():

@@ -25,20 +25,15 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h1>Find A Device:</h1>
+            <div class="col-6">
+                <h3>Find A Device:</h3>
                 <form action = "/find_device" method = "POST">
                     <div class="mb-3">
-                        <label for="type" class="form-label">Device Type (select):</label>
-                        <select name = 'type' class="form-control" id="type">
-                            <option value = "front-wheeled walker">front-wheeled walker</option>
-                            <option value = "four-wheeled walker">four-wheeled walker</option>
-                            <option value = "single-point cane">single-point cane</option>
-                            <option value = "quad cane">quad cane</option>
-                            <option value = "wheelchair">wheelchair</option>
+                        <label for="type" class = "form-label">Type:</label>
+                        <input type = "text" class = "form-control" name = "type">
                     </div>
                     <div class="mb-3">
-                        <label for="zip_code" class="form-label">zip_code:</label>
+                        <label for="zip_code" class="form-label">Zip Code:</label>
                         <input type="number" class="form-control" id="zip_code" name = "zip_code">
                     </div>
                     <div class = "mb-3">

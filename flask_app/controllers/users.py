@@ -19,7 +19,7 @@ def dashboard():
     }
     this_user = user.User.get_user_by_id(data)
     session['first_name'] = this_user.first_name
-    return render_template("dashboard.html", this_user = this_user)
+    return render_template("dashboard.html", this_user = this_user, all_devices = device.Device.view_users_posted_devices(data))
 
 #hidden
 @app.route("/add_user_to_db", methods = ['POST'])

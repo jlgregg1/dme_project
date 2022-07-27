@@ -27,23 +27,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">
-                <h2>Paintings</h2>
+                <h2>Your Posted Devices:</h2>
                 <div style = "border:5px solid black; padding-top: 20px;">
                     <ul style = "list-style-type: None;">
-                        {% for this_painting in all_paintings %}
+                        {% for this_device in all_devices %}
                         <li>
-                            <a href = "/paintings/{{this_painting.id}}">{{this_painting.title}}</a> by {{this_painting.painter.first_name}} {{this_painting.painter.last_name}}
-                            {% if this_painting.painter.id == session['user_id'] %}
-                            <a href = "/paintings/{{this_painting.id}}/delete">Delete</a>
-                            <a href = "/paintings/{{this_painting.id}}/edit">Edit</a>
-                            {% endif %}
+                            <sp>{{this_device.type}}</sp>
+                            <a href = "/delete/{{this_device.id}}">Delete</a>
+                            <a href = "/edit/{{this_device.id}}/edit">Edit</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
             <div class="col-6">
-                <h2>Your Purchased Paintings</h2>
+                <h2>Your Saved Devices:</h2>
                 <div style = "border:5px solid black; padding-top: 20px;">
                     <ul style = "list-style-type: None;">
                         {% for this_painting in all_purchased_paintings %}

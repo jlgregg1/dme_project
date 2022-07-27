@@ -33,5 +33,57 @@ class Device:
     def add_to_db(cls, data):
         query = "INSERT INTO devices (type, zip_code, comments, user_id) VALUES (%(type)s, %(zip_code)s, %(comments)s, %(user_id)s);"
         return connectToMySQL(cls.db).query_db(query, data)
+    
+    @classmethod
+    def view_users_posted_devices(cls, data):
+        query = "SELECT * FROM devices WHERE user_id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) == 0:
+            return []
+        else:
+            device_list = []
+            for this_device_dictionary in results:
+                this_device_object = cls(this_device_dictionary)
+                device_list.append(this_device_object)
+            return device_list
+
+    @classmethod
+    def view_users_saved_devices(cls, data):
+        query = "SELECT * FROM devices LEFT JOIN saved_devices ON devices.id = saved_devices.device_id WHERE saved_devices.user_id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) == 0:
+            return []
+        else:
+            device_list = []
+            for this_device_dictionary in results:
+                this_device_object = cls(this_device_dictionary)
+                device_list.append(this_device_object)
+            return device_list
+    
+    @classmethod
+    def save_device_in_list(cls, data):
+        query = "INSERT INTO saved_devices (device_id, user_id) VALUES(%(device_id)s, %(user_id)s);"
+        results = connectToMySQL(cls.db).query_db(query, data)
+
+    @classmethod
+    def search_results(cls, data):
+        query = "SELECT * FROM devices WHERE type = %(type)s AND zip_code = %(zip_code)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) == 0:
+            return []
+        else:
+            device_list = []
+            for this_device_dictionary in results:
+                this_device_object = cls(this_device_dictionary)
+                device_list.append(this_device_object)
+            return device_list
+
+
+
+
+
+
+
+
 
 
