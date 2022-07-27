@@ -5,14 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 <body>
-    <h1 style = "background-color: blueviolet; color: white;">Welcome, {{session['first_name']}}!!!</h1>
-    <form action = "/logout">
-        <div class = "mb-3">
-            <button class = "btn btn-danger" value = "login">Logout</button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}!!!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class = "nav-link" href = "/find">Find A Device</a>
+                    <a class = "nav-link" href = "/post">Post A Device</a>
+                    <a class = "nav-link" href = "/learn">Learn About Devices</a>
+                    <a href = "/logout" class = "btn btn-success">Logout</a>
+                </div>
+            </div>
         </div>
-    </form>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h2>Paintings</h2>
+                <div style = "border:5px solid black; padding-top: 20px;">
+                    <ul style = "list-style-type: None;">
+                        {% for this_painting in all_paintings %}
+                        <li>
+                            <a href = "/paintings/{{this_painting.id}}">{{this_painting.title}}</a> by {{this_painting.painter.first_name}} {{this_painting.painter.last_name}}
+                            {% if this_painting.painter.id == session['user_id'] %}
+                            <a href = "/paintings/{{this_painting.id}}/delete">Delete</a>
+                            <a href = "/paintings/{{this_painting.id}}/edit">Edit</a>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6">
+                <h2>Your Purchased Paintings</h2>
+                <div style = "border:5px solid black; padding-top: 20px;">
+                    <ul style = "list-style-type: None;">
+                        {% for this_painting in all_purchased_paintings %}
+                        <li> <a href = "/paintings/{{this_painting.id}}">{{this_painting.title}}</a> by {{this_painting.painter.first_name}} {{this_painting.painter.last_name}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

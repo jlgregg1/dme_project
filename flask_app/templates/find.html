@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Find A Device</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}!!!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+                    <a class = "nav-link" href = "/post">Post A Device</a>
+                    <a href = "/logout" class = "btn btn-success">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <h1>Find A Device:</h1>
+                <form action = "/find_device" method = "POST">
+                    <div class="mb-3">
+                        <label for="type" class="form-label">Device Type (select):</label>
+                        <select name = 'type' class="form-control" id="type">
+                            <option value = "front-wheeled walker">front_wheeled walker</option>
+                            <option value = "four-wheeled walker">four-wheeled walker</option>
+                            <option value = "single-point cane">single-point_cane</option>
+                            <option value = "quad cane">quad cane</option>
+                            <option value = "wheelchair">wheelchair</option>
+                    </div>
+                    <div class="mb-3">
+                        <label for="zip_code" class="form-label">zip_code:</label>
+                        <input type="number" class="form-control" id="zip_code" name = "zip_code">
+                    </div>
+                    <div class = "mb-3">
+                        <button class = "btn btn-success" value = "submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
