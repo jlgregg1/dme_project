@@ -12,6 +12,8 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$')
 
 class User:
+    db = "users_devices"
+
     def __init__(self, data):
         self.id = data['id']
         self.first_name = data['first_name']
@@ -24,7 +26,7 @@ class User:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO users (first_name, last_name, email, password) VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
-        return connectToMySQL('user_registration_schema').query_db(query, data)
+        return connectToMySQL(cls.db).query_db(query, data)
 
     @staticmethod
     def validate_user(user_data_from_form):
@@ -55,7 +57,7 @@ class User:
     @classmethod
     def get_by_email(cls,data): #check to see if email entered is already in db
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL('user_registration_schema').query_db(query,data)
+        results = connectToMySQL(cls.db).query_db(query,data)
         if len(results) < 1:
             return False
         return cls(results[0])
@@ -63,7 +65,7 @@ class User:
     @classmethod
     def get_user_by_id(cls, data): #check to see if id is already in db. Use this function to get additional information if id is known
         query = "SELECT * FROM users WHERE id = %(id)s;"
-        results = connectToMySQL('user_registration_schema').query_db(query,data)
+        results = connectToMySQL(cls.db).query_db(query,data)
         if len(results) == 0:
             return False
         return cls(results[0]) 

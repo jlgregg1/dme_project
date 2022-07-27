@@ -2,22 +2,24 @@ from flask import Flask, flash, session, render_template, redirect, request
 from flask_app import app
 from flask_app.models import device, user
 from flask_app.controllers import devices
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt(app)
 
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/success")
-def success():
-    if "user_id" not in session: #do not allow access to success page if not logged in (if user ID not in session)
+@app.route("/dashboard")
+def dashboard():
+    if "user_id" not in session: #do not allow access to dashboard page if not logged in (if user ID not in session)
         return redirect ("/")
     data = {
         "id" : session['user_id']
     }
     this_user = user.User.get_user_by_id(data)
     session['first_name'] = this_user.first_name
-    return render_template("success.html", this_user = this_user)
+    return render_template("dashboard.html", this_user = this_user)
 
 #hidden
 @app.route("/add_user_to_db", methods = ['POST'])
@@ -32,7 +34,7 @@ def add_user_to_db():
         "password" : hashed_password
         }
     session['user_id'] = user.User.save(data) #save user ID in session to reference later to make sure that user is logged in to access certain pages
-    return redirect("/success")
+    return redirect("/dashboard")
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -45,7 +47,7 @@ def login():
         flash("Invalid Email/Password", "login")
         return redirect('/')
     session['user_id'] = user_in_db.id #now have access to all columns in the user table, can be referenced with dot syntax
-    return redirect("/success") #check to see if /success route works if not logged in (it should not)
+    return redirect("/dashboard") #check to see if /dashboard route works if not logged in (it should not)
 
 @app.route("/logout") #not POST because only clicking a link and not submitting a form
 def logout():
