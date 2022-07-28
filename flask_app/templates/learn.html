@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}!!!</a>
+            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-10">
-                <table>
+                <table class = "table table-striped">
                     <thead>
                         <tr>
                             <th>Picture</th>
@@ -40,32 +40,91 @@
                         <tr>
                             <td></td>
                             <td>Front-wheeled Walker</td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <ul>
+                                    <li>Moderate balance deficits</li>
+                                    <li>Maximal walking stability</li>
+                                    <li>Can be used to offload weight</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Amazon</li>
+                                    <li>Walgreens</li>
+                                    <li>RiteAid</li>
+                                    <li>Bellevue Healthcare</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Four-wheeled Walker (Rollator)</td>
-                            <td></td>
-                            <td></td>
+                            <td>                                
+                                <ul>
+                                    <li>Mild balance deficits</li>
+                                    <li>Minimal walking stability</li>
+                                    <li>Frequent seated rest breaks</li>
+                                    <li>CANNOT be used to offload weight</li>
+                                    <li>NOT to be used as a wheelchair</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Amazon</li>
+                                    <li>Bellevue Healthcare</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Single-Point Cane</td>
-                            <td></td>
-                            <td></td>
+                            <td>                                
+                                <ul>
+                                    <li>Mild balance deficits</li>
+                                    <li>Minimal walking stability</li>
+                                    <li>Maximal maneuverability</li>
+                                    <li>CANNOT BE used for offloading weight</li>
+                                </ul>
+                            </td>
+                            <td>                             
+                                <ul>
+                                    <li>Amazon</li>
+                                    <li>Walgreens</li>
+                                    <li>RiteAid</li>
+                                    <li>Bellevue Healthcare</li>
+                                </ul>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Quad Cane</td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <ul>
+                                    <li>Mild to moderate balance deficits</li>
+                                    <li>Better stability than single point cane</li>
+                                    <li>Useful if user has hemiparesis</li>
+                                    <li>CANNOT BE used for offloading weight</li>
+                                </ul>
+                            <td>
+                                <li>Amazon</li>
+                                <li>Bellevue Healthcare</li>
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>Wheelchair</td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <ul>
+                                    <li>Severe balance deficits, pain, or offloading required</li>
+                                    <li>Maximal stability</li>
+                                    <li>Best for used for offloading weight</li>
+                                </ul>
+                            <td>
+                                <ul>
+                                    <li>Amazon</li>
+                                    <li>Bellevue Healthcare</li>
+                                </ul>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
