@@ -98,6 +98,13 @@ class Device:
     def delete_from_db(cls, data):
         query = "DELETE FROM devices WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db(query, data)
+    
+    @classmethod
+    def remove_from_list(cls, data):
+        query = "DELETE FROM saved_devices WHERE device_id = %(id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
+
+
 
 
 

@@ -85,7 +85,12 @@ def delete_from_db(id):
     device.Device.delete_from_db(data)
     return redirect("/dashboard")
 
-@app.route("/remove_from_saved")
-def remove_from_saved():
-    pass
-    # return redirect("/dashboard")
+@app.route("/remove/<int:id>")
+def remove_from_saved(id):
+    if 'user_id' not in session:
+        return redirect("/")
+    data = {
+        "id" : id
+    }
+    device.Device.remove_from_list(data)
+    return redirect("/dashboard")
