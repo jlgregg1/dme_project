@@ -24,12 +24,12 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-4">
+            <div class="col-6">
                 <h1>Add a Device</h1>
-                <form action = "/add_to_db" method = "POST">
-                    <div class="mb-3">
+                <div class="mb-3">
+                    <form action = "/add_to_db" method = "POST">
                         <label for="type" class="form-label">Device Type (select):</label>
                         <select name = 'type' class="form-control" id="type">
                             <option value = "front-wheeled walker">front-wheeled walker</option>
@@ -37,19 +37,21 @@
                             <option value = "single-point cane">single-point cane</option>
                             <option value = "quad cane">quad cane</option>
                             <option value = "wheelchair">wheelchair</option>
-                    </div>
-                    <div class="mb-3">
-                        <label for="comments" class="form-label">Comments (size, weight-capacity, etc):</label>
-                        <textarea class="form-control" id="comments" rows="3" name = "comments"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="zip_code" class="form-label">zip_code:</label>
-                        <input type="number" class="form-control" id="zip_code" name = "zip_code">
-                    </div>
-                    <div class = "mb-3">
-                        <button class = "btn btn-success" value = "submit">Submit</button>
-                    </div>
-                </form>
+                        </select>
+                        <div class="mb-3">
+                            <label for="zip_code" class="form-label">Zip Code:</label>
+                            <input type="number" class="form-control" id="zip_code" name = "zip_code">
+                        </div>
+                        <div class="mb-3">
+                            <label for="comments" class="form-label">Comments (height and weight specs)</label>
+                            <textarea class="form-control" id="comments" rows="3"></textarea>
+                        </div>
+                        <div class = "mb-3">
+                            <button class = "btn btn-primary" value = "Add Device">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
                 {% with messages = get_flashed_messages() %} 
                     {% if messages %}
                         {% for message in messages %}

@@ -29,16 +29,20 @@
         <div class="row">
             <div class="col-6">
                 <h2>Available Devices:</h2>
+                {% if all_device_results | length == 0 %}
+                    <p>Your search did not yield any results</p>
+                {% endif %}
                 <ul>
                     {% for this_device in all_device_results %}
-                        {% if all_device_results | length == 0 %}
-                        <p>No Devices to Show</p>
-                        {% else %}
                         <li>
-                        <p>{{this_device.type}}</p>
-                        <p>{{this_device.zip_code}}</p>
+                            {{this_device.type}}
+                            {{this_device.zip_code}}
+                            <form action = "/add_to_saved_devices/{{this_device.id}}" method = "POST">
+                                <div class = "mb-3">
+                                    <button class = "btn btn-success" value = "submit">Save</button>
+                                </div>
+                            </form>
                         </li>
-                        {%endif%}
                     {% endfor %}
                 </ul>
             </div>

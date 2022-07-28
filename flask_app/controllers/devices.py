@@ -64,7 +64,7 @@ def add_to_db():
     device.Device.add_to_db(data)
     return redirect('/dashboard')
 
-@app.route("/add_to_saved_devices/<int:id>") #need to add a link in the HTML results page
+@app.route("/add_to_saved_devices/<int:id>", methods = ["POST"]) #need to add a link in the HTML results page
 def save_device_in_list(id):
     if 'user_id' not in session:
         return redirect("/")
