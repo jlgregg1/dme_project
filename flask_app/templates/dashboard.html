@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Dashboard</title>
 </head>
@@ -14,17 +15,24 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class = "nav-link" href = "/find">Find A Device</a>
-                    <a class = "nav-link" href = "/post">Post A Device</a>
-                    <a class = "nav-link" href = "/learn">Learn About Devices</a>
-                    <a href = "/logout" class = "btn btn-success">Logout</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/find">Find a Device</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href = "/post">Post a Device</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/learn">Learn About Devices</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
         <div class="row">
             <div class="col-6">
                 <h2>Your Posted Devices:</h2>

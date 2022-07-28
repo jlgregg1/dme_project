@@ -63,7 +63,7 @@ class Device:
     @classmethod
     def save_device_in_list(cls, data):
         query = "INSERT INTO saved_devices (device_id, user_id) VALUES(%(device_id)s, %(user_id)s);"
-        results = connectToMySQL(cls.db).query_db(query, data)
+        return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
     def search_results(cls, data):
@@ -77,6 +77,29 @@ class Device:
                 this_device_object = cls(this_device_dictionary)
                 device_list.append(this_device_object)
             return device_list
+
+    @classmethod
+    def get_device_by_id(cls, data):
+        query = "SELECT * FROM devices WHERE id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) == 0:
+            return None
+        else:
+            this_device_dictionary = results[0]
+            this_device_object = cls(this_device_dictionary)
+        return this_device_object
+    
+    @classmethod
+    def edit_in_db(cls, data):
+        query = "UPDATE devices SET type = %(type)s, zip_code = %(zip_code)s, comments = %(comments)s WHERE id = %(id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
+
+    @classmethod
+    def delete_from_db(cls, data):
+        query = "DELETE FROM devices WHERE id = %(id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
+
+
 
 
 

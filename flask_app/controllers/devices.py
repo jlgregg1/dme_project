@@ -32,9 +32,9 @@ def edit(id):
     if "user_id" not in session: #do not allow access to create page if not logged in (if user ID not in session)
         return redirect ("/")
     data = {
-        "id" : id
+        "id" : id #this is the device id, not user id
     }
-    return render_template("edit.html") #will need to pass in correct device info
+    return render_template("edit.html", this_device = device.Device.get_device_by_id(data))
 
 #hidden
 
@@ -75,10 +75,15 @@ def save_device_in_list(id):
     device.Device.save_device_in_list(data)
     return redirect("/dashboard")
 
-@app.route("/delete_from_db")
-def delete_from_db():
-    pass
-    # return redirect("/dashboard")
+@app.route("/delete/<int:id>")
+def delete_from_db(id):
+    if 'user_id' not in session:
+        return redirect("/")
+    data = {
+        "id" : id
+    }
+    device.Device.delete_from_db(data)
+    return redirect("/dashboard")
 
 @app.route("/remove_from_saved")
 def remove_from_saved():
