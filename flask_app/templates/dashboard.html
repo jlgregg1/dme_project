@@ -24,7 +24,7 @@
                         <a class="nav-link" href="/find">Find a Device</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href = "/post">Post a Device</a>
+                        <a class="nav-link" href = "/post">Donate a Device</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/learn">Learn About Devices</a>
@@ -38,14 +38,14 @@
     </nav>
         <div class="row">
             <div class="col-6">
-                <h2>Your Posted Devices:</h2>
+                <h2>Your Donated Devices:</h2>
                 <div style = "border:5px solid black; padding-top: 20px;">
                     <ul style = "list-style-type: None;">
                         {% for this_device in all_devices %}
                         <li>
                             <sp>{{this_device.type}}</sp>
                             <a href = "/delete/{{this_device.id}}">Delete</a>
-                            <a href = "/edit/{{this_device.id}}/edit">Edit</a>
+                            <a href = "/edit/{{this_device.id}}">Edit</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -57,7 +57,8 @@
                     <ul style = "list-style-type: None;">
                         {% for this_device in all_saved_devices %}
                         <li>
-                            <sp>{{this_device.type}}</sp>
+                            <sp>{{this_device.type}}:</sp>
+                            <sp>{{this_device.comments}}</sp>
                             <a href = "/remove/{{this_device.id}}">Remove</a>
                             <a href = "#">Contact</a>
                         </li>
