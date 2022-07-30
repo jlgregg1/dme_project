@@ -8,18 +8,30 @@
     <title>Find A Device</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">Navigation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
-                    <a class = "nav-link" href = "/post">Donate A Device</a>
-                    <a href = "/logout" class = "btn btn-success">Logout</a>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/find">Find a Device</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href = "/post">Donate a Device</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/learn">Learn About Devices</a>
+                    </li>
+                    <li class = "nav-item">
+                        <a href = "/logout" class = "btn btn-danger btn-outline-dark">Logout</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
