@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navigation</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +40,7 @@
     <div class = "container">
         <div class="row">
             <div class="col-6">
-                <h2>Your Donated Devices:</h2>
+                <h1>Your Donated Devices:</h1>
                 <div>
                     <ul class = "list-group" style = "list-style-type: None;">
                         {% for this_device in all_devices %}
@@ -53,7 +54,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <h2>Your Saved Devices:</h2>
+                <h1>Your Saved Devices:</h1>
                 <div>
                     <ul class = "list-group" style = "list-style-type: None;">
                         {% for this_device in all_saved_devices %}
@@ -66,6 +67,11 @@
                         {% endfor %}
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <img class = "logo" src = "static/img/cane_exchange.png" alt = "cane exchange logo">
             </div>
         </div>
     </div>
