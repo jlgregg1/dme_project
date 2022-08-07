@@ -90,6 +90,28 @@ class Device:
         return this_device_object
     
     @classmethod
+    def get_device_owner(cls, data):
+        query = "SELECT * FROM devices LEFT JOIN users ON users.id = devices.user_id WHERE devices.id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) == 0:
+            return None
+        else:
+            this_device_dictionary = results[0]
+            this_device_object = cls(this_device_dictionary)
+            this_user_dictionary = {
+                "id" : results[0]['users.id'],
+                "first_name" : results[0]['first_name'],
+                "last_name" : results[0]['last_name'],
+                "email" : results[0]['email'],
+                "password" : results[0]['password'],
+                "created_at" : results[0]['users.created_at'],
+                "updated_at" : results[0]['users.updated_at']
+            }
+            this_user_object = user.User(this_user_dictionary)
+            this_device_object.user = this_user_object
+            return this_device_object
+    
+    @classmethod
     def edit_in_db(cls, data):
         query = "UPDATE devices SET type = %(type)s, zip_code = %(zip_code)s, comments = %(comments)s WHERE id = %(id)s;"
         return connectToMySQL(cls.db).query_db(query, data)

@@ -62,7 +62,7 @@
                             <sp>{{this_device.type}}:</sp>
                             <sp>{{this_device.comments}}</sp>
                             <a href = "/remove/{{this_device.id}}">Remove</a>
-                            <a href = "#">Contact</a>
+                            <a href = "/message/{{this_device.id}}">Send Message</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -72,6 +72,21 @@
         <div class="row">
             <div class="col-6">
                 <img class = "logo" src = "static/img/cane_exchange.png" alt = "cane exchange logo">
+            </div>
+            <div class="col-6">
+                <h1>Your Messages:</h1>
+                <div>
+                    <ul class = "list-group" style = "list-style-type: None;">
+                        {% for this_device in all_saved_devices %}
+                        <li class = "list-group-item">
+                            <sp>{{this_device.type}}:</sp>
+                            <sp>{{this_device.comments}}</sp>
+                            <a href = "/remove/{{this_device.id}}">Remove</a>
+                            <a href = "#">Contact</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
