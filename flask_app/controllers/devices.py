@@ -4,21 +4,25 @@ from flask_app.models import user, device, message
 
 @app.route("/learn")
 def learn():
+    if "user_id" not in session: 
+        return redirect ("/")
     return render_template("learn.html")
 
 @app.route("/find")
 def find():
+    if "user_id" not in session: 
+        return redirect ("/")
     return render_template("find.html")
 
 @app.route("/post")
 def post():
-    if "user_id" not in session: #do not allow access to create page if not logged in (if user ID not in session)
+    if "user_id" not in session: 
         return redirect ("/")
     return render_template("post.html")
 
 @app.route("/find_device", methods = ["GET", "POST"])
 def find_device():
-    if "user_id" not in session: #do not allow access to create page if not logged in (if user ID not in session)
+    if "user_id" not in session: 
         return redirect ("/")
     data = {
         "type" : request.form['type'],
@@ -28,14 +32,14 @@ def find_device():
 
 @app.route("/edit/<int:id>")
 def edit(id):
-    if "user_id" not in session: #do not allow access to create page if not logged in (if user ID not in session)
+    if "user_id" not in session:
         return redirect ("/")
     data = {
         "device_id" : id #this is the device id, not user id
     }
     return render_template("edit.html", this_device = device.Device.get_device_by_id(data))
 
-#hidden
+#hidden routes
 
 @app.route("/edit_in_db/<int:id>", methods = ['POST'])
 def edit_in_db(id):
