@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navigation</a>
+            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,7 +39,18 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3>Send Reply to {{message_recipient.first_name}} {{message_recipient.last_name}}</h3>
+                <h1>Your sent messages:</h1>
+                {% for this_message in all_messages %}
+                    <div class = "card bg-info my-2">
+                        <div class = "card-body">
+                            <h3 class = "card-title">To {{this_message.recipient}} on {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h3>
+                            <p class = "card-text">{{this_message.message}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                <h1>Send Reply to {{message_recipient.first_name}} {{message_recipient.last_name}}</h1>
                 <h6>about {{this_device.type}} in {{this_device.zip_code}}</h6>
                 <form action = "/add_reply_to_db/{{message_recipient.id}}/{{this_device.id}}" method = "POST">
                     <div class="mb-3">

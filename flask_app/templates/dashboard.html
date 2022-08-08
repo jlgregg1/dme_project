@@ -71,7 +71,7 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <h1>Your Messages:</h1>
+                <h1>Your Received Messages:</h1>
                 <div>
                     {% for this_message in all_messages %}
                         {% if session['user_id'] == this_message.recipient_id and session['user_id'] != this_message.sender_id%}
