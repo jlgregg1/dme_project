@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/style.css">
-    <title>Find A Device</title>
+    <title>Send Reply</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,12 +39,12 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3>Send Message to {{device_with_owner.user.first_name}}</h3>
-                <h5>about {{this_device.type}} in {{this_device.zip_code}}</h5>
-                <form action = "/add_message_to_db" method = "POST">
+                <h3>Send Reply to {{message_recipient.first_name}} {{message_recipient.last_name}}</h3>
+                <h6>about {{this_device.type}} in {{this_device.zip_code}}</h6>
+                <form action = "/add_reply_to_db" method = "POST">
                     <div class="mb-3">
-                        <input type = "hidden" name = "recipient_id" id = "recipient_id" value = "{{device_with_owner.user.id}}">
-                        <input type = "hidden" name = "device_id" id = "device_id" value = "{{this_device.id}}">
+                        <input type = "hidden" id = "recipient_id" name = "recipient_id" value = "{{message_recipient.id}}">
+                        <input type = "hidden" id = "device_id" name = "device_id" value = "{{this_device.id}}">
                         <label for="message" class="form-label">Write your message:</label>
                         <textarea class="form-control" id="message" rows="3" name = "message"></textarea>
                     </div>

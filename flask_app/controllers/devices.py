@@ -31,7 +31,7 @@ def edit(id):
     if "user_id" not in session: #do not allow access to create page if not logged in (if user ID not in session)
         return redirect ("/")
     data = {
-        "id" : id #this is the device id, not user id
+        "device_id" : id #this is the device id, not user id
     }
     return render_template("edit.html", this_device = device.Device.get_device_by_id(data))
 

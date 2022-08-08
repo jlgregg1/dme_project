@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navigation</a>
+            <a class="navbar-brand" href="#">Welcome, {{session['first_name']}}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -78,11 +78,13 @@
                 <div>
                     <ul class = "list-group" style = "list-style-type: None;">
                         {% for this_message in all_messages %}
-                        <li class = "list-group-item">
-                            <sp>From {{this_message.sender}} at {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</sp>
-                            <p>{{this_message.message}}</p>
-                            <a href="/reply/{{this_message.sender}}">Reply</a>
-                        </li>
+                            {% if session['user_id'] == this_message.recipient_id and session['user_id'] != this_message.sender_id%}
+                            <li class = "list-group-item">
+                                <h6>From {{this_message.sender}} at {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h6>
+                                <p>{{this_message.message}}</p>
+                                <a href="/reply/{{this_message.sender_id}}/{{this_message.device_id}}">Reply</a>
+                            </li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 </div>

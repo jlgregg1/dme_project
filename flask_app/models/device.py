@@ -81,7 +81,7 @@ class Device:
 
     @classmethod
     def get_device_by_id(cls, data):
-        query = "SELECT * FROM devices WHERE id = %(id)s;"
+        query = "SELECT * FROM devices WHERE id = %(device_id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) == 0:
             return None
