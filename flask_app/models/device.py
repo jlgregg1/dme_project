@@ -23,8 +23,8 @@ class Device:
     @staticmethod
     def validate_device(form_data):
         is_valid = True
-        if len(form_data['comments']) < 10: 
-            flash("Comments must be 10 or more characters")
+        if len(form_data['comments']) < 3: 
+            flash("Comments must be 3 or more characters")
             is_valid = False
         if len(form_data['zip_code']) != 5:
             flash("Must enter a 5-digit zip-code")
@@ -92,7 +92,7 @@ class Device:
     
     @classmethod
     def get_device_owner(cls, data):
-        query = "SELECT * FROM devices LEFT JOIN users ON users.id = devices.user_id WHERE devices.id = %(id)s;"
+        query = "SELECT * FROM devices LEFT JOIN users ON users.id = devices.user_id WHERE devices.id = %(device_id)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) == 0:
             return None

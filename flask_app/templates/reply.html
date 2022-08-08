@@ -41,7 +41,7 @@
             <div class="col-6">
                 <h3>Send Reply to {{message_recipient.first_name}} {{message_recipient.last_name}}</h3>
                 <h6>about {{this_device.type}} in {{this_device.zip_code}}</h6>
-                <form action = "/add_reply_to_db" method = "POST">
+                <form action = "/add_reply_to_db/{{message_recipient.id}}/{{this_device.id}}" method = "POST">
                     <div class="mb-3">
                         <input type = "hidden" id = "recipient_id" name = "recipient_id" value = "{{message_recipient.id}}">
                         <input type = "hidden" id = "device_id" name = "device_id" value = "{{this_device.id}}">
@@ -53,6 +53,13 @@
                     </div>
                 </form>
             </div>
+            {% with messages = get_flashed_messages() %} 
+                {% if messages %}
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </div>
     </div>
         </div>

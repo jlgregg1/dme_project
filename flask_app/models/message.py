@@ -3,6 +3,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import app 
 from flask_app.controllers import devices, users, messages
 from flask_app.models import user, device
+from flask import flash
 
 class Message:
     db = "users_devices"
@@ -40,3 +41,11 @@ class Message:
     def delete(cls, data):
         query = "DELETE FROM messages WHERE messages.id = %(message_id)s;"
         return connectToMySQL(cls.db).query_db(query, data)
+    
+    @staticmethod
+    def validate_message(form_data):
+        is_valid = True
+        if len(form_data['message']) < 3: 
+            flash("Message must be 3 or more characters")
+            is_valid = False
+        return is_valid
