@@ -35,3 +35,8 @@ class Message:
                 this_message_object = cls(this_message_dictionary)
                 message_list.append(this_message_object)
             return message_list
+
+    @classmethod
+    def delete(cls, data):
+        query = "DELETE FROM messages WHERE messages.id = %(message_id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)

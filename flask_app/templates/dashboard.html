@@ -70,10 +70,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6">
-                <img class = "logo" src = "static/img/cane_exchange.png" alt = "cane exchange logo">
-            </div>
-            <div class="col-6">
+            <div class="col-8">
                 <h1>Your Messages:</h1>
                 <div>
                     <ul class = "list-group" style = "list-style-type: None;">
@@ -83,6 +80,7 @@
                                 <h6>From {{this_message.sender}} at {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h6>
                                 <p>{{this_message.message}}</p>
                                 <a href="/reply/{{this_message.sender_id}}/{{this_message.device_id}}">Reply</a>
+                                <a href="/delete/{{this_message.id}}">Delete</a>
                             </li>
                             {% endif %}
                         {% endfor %}

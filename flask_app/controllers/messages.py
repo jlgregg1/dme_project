@@ -38,3 +38,11 @@ def add_reply_to_db():
     }
     message.Message.add_message_to_db(data)
     return redirect("/dashboard")
+
+@app.route("/delete/<int:id>")
+def delete(id):
+    data = {
+        "message_id" : id
+    }
+    message.Message.delete(data)
+    return redirect("/dashboard")
