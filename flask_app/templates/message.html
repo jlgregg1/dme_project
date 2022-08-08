@@ -39,9 +39,12 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
+                <h3>Send Message to {{device_with_owner.user.first_name}} {{device_with_owner.user.last_name}}</h3>
+                <h5>about {{this_device.type}} in {{this_device.zip_code}}</h5>
                 <form action = "/add_message_to_db" method = "POST">
                     <div class="mb-3">
-                        <input type = "hidden" name = "recipient_id" id = "recipient_id" value = "#">
+                        <input type = "hidden" name = "recipient_id" id = "recipient_id" value = "{{device_with_owner.user.id}}">
+                        <input type = "hidden" name = "device_id" id = "device_id" value = "{{this_device.id}}">
                         <label for="message" class="form-label">Write your message:</label>
                         <textarea class="form-control" id="message" rows="3" name = "message"></textarea>
                     </div>
