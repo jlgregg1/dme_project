@@ -18,7 +18,7 @@ class Device:
         self.comments = data['comments']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.user = None
+        self.user_id = data['user_id']
 
     @staticmethod
     def validate_device(form_data):

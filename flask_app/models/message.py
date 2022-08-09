@@ -26,7 +26,7 @@ class Message:
     
     @classmethod
     def get_all_received_messages(cls, data):
-        query = "SELECT users.first_name AS sender, users2.first_name as recipient, message, messages.id as id, messages.created_at as created_at, messages.updated_at as updated_at, sender_id, recipient_id, device_id FROM users LEFT JOIN messages ON users.id = messages.sender_id LEFT JOIN users as users2 ON users2.id = messages.recipient_id WHERE users2.id = %(id)s;"
+        query = "SELECT users.first_name AS sender, users2.first_name as recipient, message, messages.id as id, messages.created_at as created_at, messages.updated_at as updated_at, sender_id, recipient_id, device_id FROM users LEFT JOIN messages ON users.id = messages.sender_id LEFT JOIN users as users2 ON users2.id = messages.recipient_id WHERE users2.id = %(id)s ORDER BY created_at DESC;"
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) == 0:
             return []
