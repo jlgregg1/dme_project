@@ -46,7 +46,7 @@ def edit_in_db(id):
     if not device.Device.validate_device(request.form):
         return redirect(f'edit_in_db/{id}')
     data = {
-        'id' : id,
+        'device_id' : id,
         'type' : request.form['type'],
         'zip_code' : request.form['zip_code'],
         'comments' : request.form['comments']
@@ -78,12 +78,12 @@ def save_device_in_list(id):
     device.Device.save_device_in_list(data)
     return redirect("/dashboard")
 
-@app.route("/delete/<int:id>")
+@app.route("/delete_device/<int:id>")
 def delete_from_db(id):
     if 'user_id' not in session:
         return redirect("/")
     data = {
-        "id" : id
+        "device_id" : id
     }
     device.Device.delete_from_db(data)
     return redirect("/dashboard")

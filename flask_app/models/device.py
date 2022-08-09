@@ -114,12 +114,12 @@ class Device:
     
     @classmethod
     def edit_in_db(cls, data):
-        query = "UPDATE devices SET type = %(type)s, zip_code = %(zip_code)s, comments = %(comments)s WHERE id = %(id)s;"
+        query = "UPDATE devices SET type = %(type)s, zip_code = %(zip_code)s, comments = %(comments)s WHERE id = %(device_id)s;"
         return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
     def delete_from_db(cls, data):
-        query = "DELETE FROM devices WHERE id = %(id)s;"
+        query = "DELETE FROM devices WHERE id = %(device_id)s;"
         return connectToMySQL(cls.db).query_db(query, data)
     
     @classmethod
