@@ -41,7 +41,7 @@
             <div class="col-6">
                 <h1>Your sent messages:</h1>
                 {% for this_message in all_messages %}
-                    <div class = "card bg-info my-2">
+                    <div class = "card bg-light my-2">
                         <div class = "card-body">
                             <h3 class = "card-title">To {{this_message.recipient}} on {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h3>
                             <p class = "card-text">{{this_message.message}}</p>

@@ -44,7 +44,7 @@
                     <form action = "/add_to_db" method = "POST">
                         <label for="type" class="form-label">Device Type (select):</label>
                         <div class = "mb-3">
-                            <select name = 'type' class="form-control" id="type">
+                            <select name = 'type' class="form-select" id="type">
                                 <option value = "front-wheeled walker">front-wheeled walker</option>
                                 <option value = "four-wheeled walker">four-wheeled walker</option>
                                 <option value = "single-point cane">single-point cane</option>
@@ -57,7 +57,8 @@
                             <input type="number" class="form-control" id="zip_code" name = "zip_code">
                         </div>
                         <div class="mb-3">
-                            <label for="comments" class="form-label">Device's user height and weight specifications (include seat width and depth for wheelchairs):</label>
+                            <label for="comments" class="form-label">Sizing:</label>
+                            <label for="comments" class="form-label" id = "display_info" onclick="displayInfo(this)">Click here</label>
                             <textarea class="form-control" id="comments" rows="3" name = "comments"></textarea>
                         </div>
                         <div class = "mb-3">

@@ -75,7 +75,7 @@
                 <div>
                     {% for this_message in all_messages %}
                         {% if session['user_id'] == this_message.recipient_id and session['user_id'] != this_message.sender_id%}
-                        <div class = "card bg-info my-2">
+                        <div class = "card bg-light my-2">
                             <div class = "card-body">
                                 <h3 class = "card-title">From {{this_message.sender}} at {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h3>
                                 <p class = "card-text">{{this_message.message}}</p>

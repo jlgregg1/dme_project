@@ -29,3 +29,8 @@ h1{
 .bullet{
     margin-bottom: 15px;
 }
+#display_info{
+    padding:5px;
+    background-color: #bcd1f5;
+    border: 1px solid black;
+}

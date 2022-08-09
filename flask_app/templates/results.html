@@ -43,14 +43,14 @@
                 {% if all_device_results | length == 0 %}
                     <p>Your search did not yield any results</p>
                 {% endif %}
-                <ul>
+                <ul class = "list-group" style = "list-style-type: None;">
                     {% for this_device in all_device_results %}
-                        <li>
-                            {{this_device.type}}
-                            {{this_device.zip_code}}
-                            {{this_device.comments}}
+                        <li class = "list-group-item">
                             <form action = "/add_to_saved_devices/{{this_device.id}}" method = "POST">
                                 <div class = "mb-3">
+                                    <p>Device: {{this_device.type}}</p>
+                                    <p>Location: {{this_device.zip_code}}</p>
+                                    <p>Sizing: {{this_device.comments}}</p>
                                     <button class = "btn btn-success" value = "submit">Save</button>
                                 </div>
                             </form>
