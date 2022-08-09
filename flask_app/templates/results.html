@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="#maincontent">Skip Navigation</a>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navigation</a>
@@ -30,13 +31,13 @@
                         <a class="nav-link active" href="/learn">Learn About Devices</a>
                     </li>
                     <li class = "nav-item">
-                        <a href = "/logout" class = "btn btn-danger btn-outline-dark">Logout</a>
+                        <a href = "/logout" class = "btn btn-light">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" id = "maincontent">
         <div class="row">
             <div class="col-6">
                 <h1>Available Devices:</h1>
@@ -52,7 +53,7 @@
                                     <p>Device: {{this_device.type}}</p>
                                     <p>Location: {{this_device.zip_code}}</p>
                                     <p>Sizing: {{this_device.comments}}</p>
-                                    <button class = "btn btn-success" value = "submit">Save</button>
+                                    <button class = "btn btn-light btn-outline-dark" value = "submit">Save</button>
                                 </div>
                             </form>
                         </li>

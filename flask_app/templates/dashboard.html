@@ -10,6 +10,7 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <a href="#maincontent">Skip Navigation</a>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navigation</a>
@@ -37,33 +38,33 @@
             </div>
         </div>
     </nav>
-    <div class = "container">
+    <div class = "container" id = "maincontent">
         <h1>Welcome, {{session['first_name']}}</h1>
         <div class="row">
             <div class="col-6">
-                <h1>Your Donated Devices:</h1>
+                <h2>Your Donated Devices:</h2>
                 <div>
                     <ul class = "list-group" style = "list-style-type: None;">
                         {% for this_device in all_devices %}
                         <li class = "list-group-item">
                             <sp>{{this_device.type}}</sp>
-                            <a href = "/delete_device/{{this_device.id}}">Delete</a>
-                            <a href = "/edit/{{this_device.id}}">Edit</a>
+                            <a href = "/delete_device/{{this_device.id}}" style = "color: navy;" >Delete</a>
+                            <a href = "/edit/{{this_device.id}}" style = "color: navy;" >Edit</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
             <div class="col-6">
-                <h1>Your Saved Devices:</h1>
+                <h2>Your Saved Devices:</h2>
                 <div>
                     <ul class = "list-group" style = "list-style-type: None;">
                         {% for this_device in all_saved_devices %}
                         <li class = "list-group-item">
                             <sp>{{this_device.type}}:</sp>
                             <sp>{{this_device.comments}}</sp>
-                            <a href = "/remove/{{this_device.id}}">Remove</a>
-                            <a href = "/message/{{this_device.id}}">Send Message</a>
+                            <a href = "/remove/{{this_device.id}}" style = "color: navy;" >Remove</a>
+                            <a href = "/message/{{this_device.id}}" style = "color: navy;" >Send Message</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -72,7 +73,7 @@
         </div>
         <div class="row">
             <div class="col-8">
-                <h1>Your Received Messages:</h1>
+                <h2>Your Received Messages:</h2>
                 <div>
                     {% for this_message in all_messages %}
                         {% if session['user_id'] == this_message.recipient_id and session['user_id'] != this_message.sender_id%}
@@ -82,8 +83,8 @@
                                 <p class = "card-text">{{this_message.message}}</p>
                             </div>
                             <div class = "card-footer">
-                                <a href="/reply/{{this_message.sender_id}}/{{this_message.device_id}}">Reply</a>
-                                <a href="/delete/{{this_message.id}}">Delete</a>
+                                <a href="/reply/{{this_message.sender_id}}/{{this_message.device_id}}" style = "color: navy;">Reply</a>
+                                <a href="/delete/{{this_message.id}}" style = "color: navy;" >Delete</a>
                             </div>
                         </div>
                         {% endif %}
@@ -91,7 +92,7 @@
                 </div>
             </div>
             <div class="col-4">
-                <img class = "logo" src = "static/img/logo.png" alt = "cane exchange logo">
+                <img class = "logo" src = "static/img/logo.png" alt = "cane exchange logo: two canes crossed in the shape of an x with website name text below">
             </div>
         </div>
     </div>

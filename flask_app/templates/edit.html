@@ -9,6 +9,7 @@
     <title>Edit Device</title>
 </head>
 <body>
+    <a href="#maincontent">Skip Navigation</a>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navigation</a>
@@ -36,7 +37,7 @@
             </div>
         </div>
     </nav>
-    <div class="container" style = "margin: 30px;">
+    <div class="container" id = "maincontent" style = "margin: 30px;">
         <div class="row">
             <div class="col-6">
                 <h1 style = "margin-bottom: 30px;">Edit Your Device:</h1>
@@ -44,6 +45,7 @@
                     <div class="mb-3">
                         <label for="type" class="form-label">Device Type (select):</label>
                         <select name = 'type' class="form-select" id="type">
+                            <option value = "{{this_device.type}}" selected>{{this_device.type}}</option>
                             <option value = "front-wheeled walker">front-wheeled walker</option>
                             <option value = "four-wheeled walker">four-wheeled walker</option>
                             <option value = "single-point cane">single-point cane</option>
@@ -60,7 +62,7 @@
                         <textarea class="form-control" id="comments" rows="3" name = "comments">{{this_device.comments}}</textarea>
                     </div>
                     <div class = "mb-3">
-                        <button class = "btn btn-success" value = "submit">Update</button>
+                        <button class = "btn btn-light btn-outline-dark" value = "submit">Update</button>
                     </div>
                 </form>
                 {% with messages = get_flashed_messages() %} 
@@ -72,7 +74,7 @@
                 {% endwith %}
             </div>
             <div class="col-4">
-                <img class = "logo" src = "static/img/logo.png" alt = "cane exchange logo">
+                <img class = "logo" src = "/static/img/logo.png" alt = "cane exchange logo: two canes crossed in the shape of an x with website name text below">
             </div>
         </div>
     </div>
