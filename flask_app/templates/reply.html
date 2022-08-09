@@ -51,7 +51,7 @@
             </div>
             <div class="col-6">
                 <h1>Send Reply to {{message_recipient.first_name}} {{message_recipient.last_name}}</h1>
-                <h6>about {{this_device.type}} in {{this_device.zip_code}}</h6>
+                <h3>about {{this_device.type}} in {{this_device.zip_code}}</h3>
                 <form action = "/add_reply_to_db/{{message_recipient.id}}/{{this_device.id}}" method = "POST">
                     <div class="mb-3">
                         <input type = "hidden" id = "recipient_id" name = "recipient_id" value = "{{message_recipient.id}}">

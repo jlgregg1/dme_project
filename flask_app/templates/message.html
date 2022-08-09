@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Find A Device</title>
 </head>
-<body style = "background-color:#bcd1f5;">
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navigation</a>
@@ -39,8 +39,8 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3>Send Message to {{device_with_owner.user.first_name}}</h3>
-                <h5>about {{this_device.type}} in {{this_device.zip_code}}</h5>
+                <h1>Send Message to {{device_with_owner.user.first_name}}</h1>
+                <h3>about {{this_device.type}} in {{this_device.zip_code}}</h3>
                 <form action = "/add_message_to_db/{{this_device.id}}" method = "POST">
                     <div class="mb-3">
                         <input type = "hidden" name = "recipient_id" id = "recipient_id" value = "{{device_with_owner.user.id}}">

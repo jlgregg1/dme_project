@@ -58,7 +58,17 @@
                         </div>
                         <div class="mb-3">
                             <label for="comments" class="form-label">Sizing:</label>
-                            <label for="comments" class="form-label" id = "display_info" onclick="displayInfo(this)">Click here</label>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sizing Guide</button>
+                                    </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <strong>For walking devices: </strong>include user height range (for example, 5ft 2in tall to 5ft 8in tall). <strong>For wheelchairs: </strong>include seat width and depth (for example, width: 20in, depth, 18in). 
+                                    </div>
+                                </div>
+                            </div>
                             <textarea class="form-control" id="comments" rows="3" name = "comments"></textarea>
                         </div>
                         <div class = "mb-3">
@@ -74,9 +84,6 @@
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
-            <div class="col-4">
-                <img class = "logo" src = "static/img/logo.png" alt = "cane exchange logo">
-            </div>
         </div>
     </div>
     <script src="static/js/script.js"></script>
