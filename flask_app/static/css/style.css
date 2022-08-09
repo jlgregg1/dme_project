@@ -1,5 +1,5 @@
 body{
-    background-color:#bcd1f5;
+    background-color:#3E79E0;
 }
 img {
     width: 100px;
@@ -22,15 +22,13 @@ img {
 .container {
     margin-top:50px;
 }
-h1{
+h1, h2{
     margin-bottom: 20px;
     margin-top: 20px;
 }
 .bullet{
     margin-bottom: 15px;
 }
-#display_info{
-    padding:5px;
-    background-color: #bcd1f5;
-    border: 1px solid black;
+a {
+    color: white;
 }
