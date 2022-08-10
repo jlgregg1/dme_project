@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style.css">
-    <title>Find A Device</title>
+    <title>Document</title>
 </head>
 <body>
-    <a href="#maincontent">Skip Navigation</a>
+    <a href="#maincontent2">Skip Navigation</a>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navigation</a>
@@ -40,32 +40,23 @@
             </div>
         </div>
     </nav>
-    <div class="container" id = "maincontent">
+    <div class="alert alert-warning text-dark alert-dismissible fade show" role="alert">
+        <strong>Tip:</strong> Use the black navigation bar with the white text links at the top of each page to help you get to the right pages. If you get lost, click "Home" to bring you back here.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="container" id = "maincontent2">
         <div class="row">
-            <div class="col-6">
-                <h1>Find A Device:</h1>
-                <form action = "/find_device" method = "POST">
-                    <div class="mb-3">
-                        <label for="type" class="form-label">Device Type (select):</label>
-                        <select name = 'type' class="form-select" id="type">
-                            <option value = "front-wheeled walker">front-wheeled walker</option>
-                            <option value = "four-wheeled walker">four-wheeled walker</option>
-                            <option value = "single-point cane">single-point cane</option>
-                            <option value = "quad cane">quad cane</option>
-                            <option value = "wheelchair">wheelchair</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="zip_code" class="form-label">Zip Code:</label>
-                        <input type="number" class="form-control" id="zip_code" name = "zip_code">
-                    </div>
-                    <div class = "mb-3">
-                        <button class = "btn btn-light btn-outline-dark" value = "submit">Find</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-4">
-                <img class = "logo" src = "static/img/logo.png" alt = "cane exchange logo: two canes crossed in the shape of an x with website name text below">
+            <div class="col-12">
+                <h1>Welcome to Cane Exchange:</h1>
+                <h3>Your resource for locating, donating, and learning about assistive devices that can help you get around.</h2>
+                <img src = "/static/img/logo.png" id = "logo-main" alt = "cane exchange logo: two canes crossed in the shape of an x with website name text below">
+                <h4>Click on an option below to get started:</h4>
+                <ul>
+                    <li><a href="/dashboard" style = "color:navy;">Dashboard</a>:   Shows devices that you've saved, devices that you're offering for donation, messages from others.</li>
+                    <li><a href="/find" style = "color:navy;">Find a Device</a>:   Lets you search for devices in your zip code that are being donated.</li>
+                    <li><a href = "/post" style = "color:navy;">Donate a Device</a>:   Lets you put in your device details to offer it for donation to another user on this site.</li>
+                    <li><a href="/learn" style = "color:navy;">Learn About Devices</a>:   Gives you information about who can safely use each device and links to pages about how to use the and where to buy them.</li>
+                </ul>
             </div>
         </div>
     </div>

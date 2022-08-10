@@ -9,6 +9,17 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template("index.html")
 
+@app.route("/welcome")
+def welcome():
+    if "user_id" not in session: #do not allow access to dashboard page if not logged in (if user ID not in session)
+        return redirect ("/")
+    data = {
+        "id" : session['user_id']
+    }
+    this_user = user.User.get_user_by_id(data)
+    session['first_name'] = this_user.first_name
+    return render_template("welcome.html")
+
 @app.route("/dashboard")
 def dashboard():
     if "user_id" not in session: #do not allow access to dashboard page if not logged in (if user ID not in session)
@@ -17,7 +28,6 @@ def dashboard():
         "id" : session['user_id']
     }
     this_user = user.User.get_user_by_id(data)
-    session['first_name'] = this_user.first_name
     return render_template("dashboard.html", this_user = this_user, all_devices = device.Device.view_users_posted_devices(data), all_saved_devices = device.Device.view_users_saved_devices(data), all_messages = message.Message.get_all_received_messages(data))
 
 #hidden
@@ -33,7 +43,7 @@ def add_user_to_db():
         "password" : hashed_password
         }
     session['user_id'] = user.User.save(data) #save user ID in session to reference later to make sure that user is logged in to access certain pages
-    return redirect("/dashboard")
+    return redirect("/welcome")
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -46,7 +56,7 @@ def login():
         flash("Invalid Email/Password", "login")
         return redirect('/')
     session['user_id'] = user_in_db.id #now have access to all columns in the user table, can be referenced with dot syntax
-    return redirect("/dashboard") #check to see if /dashboard route works if not logged in (it should not)
+    return redirect("/welcome") #check to see if /dashboard route works if not logged in (it should not)
 
 @app.route("/logout") #not POST because only clicking a link and not submitting a form
 def logout():

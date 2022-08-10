@@ -2,7 +2,7 @@ body{
     background-color:#3E79E0;
 }
 img {
-    width: 100px;
+    width: 200px;
     border: 3px solid black;
 }
 .logo{
@@ -17,12 +17,13 @@ img {
 #logo-main{
     margin: 30px;
     border: none;
-    width: 350px;
+    width: 250px;
+    align-items: center;
 }
 .container {
     margin-top:50px;
 }
-h1, h2{
+h1, h2, h3, h4, h5, h6{
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -31,4 +32,10 @@ h1, h2{
 }
 a {
     color: white;
+}
+#maincontent2{
+    background-color: white;
+}
+#headingOne{
+    margin: 0 auto;
 }
