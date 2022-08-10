@@ -43,6 +43,8 @@
     </nav>
     <div class = "container" id = "maincontent">
         <h1>{{session['first_name']}}'s Dashboard</h1>
+        <div id="bar">
+        </div>
         <div class="row">
             <div class="col-6">
                 <h2>Your Donated Devices:</h2>
@@ -51,8 +53,8 @@
                         {% for this_device in all_devices %}
                         <li class = "list-group-item">
                             <sp>{{this_device.type}}</sp>
-                            <a href = "/delete_device/{{this_device.id}}" style = "color: navy;" >Delete</a>
-                            <a href = "/edit/{{this_device.id}}" style = "color: navy;" >Edit</a>
+                            <a href = "/delete_device/{{this_device.id}}">Delete</a>
+                            <a href = "/edit/{{this_device.id}}">Edit</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -66,8 +68,8 @@
                         <li class = "list-group-item">
                             <sp>{{this_device.type}}:</sp>
                             <sp>{{this_device.comments}}</sp>
-                            <a href = "/remove/{{this_device.id}}" style = "color: navy;" >Remove</a>
-                            <a href = "/message/{{this_device.id}}" style = "color: navy;" >Send Message</a>
+                            <a href = "/remove/{{this_device.id}}">Remove</a>
+                            <a href = "/message/{{this_device.id}}">Send Message</a>
                         </li>
                         {% endfor %}
                     </ul>
@@ -86,8 +88,8 @@
                                 <p class = "card-text">{{this_message.message}}</p>
                             </div>
                             <div class = "card-footer">
-                                <a href="/reply/{{this_message.sender_id}}/{{this_message.device_id}}" style = "color: navy;">Reply</a>
-                                <a href="/delete/{{this_message.id}}" style = "color: navy;" >Delete</a>
+                                <a href="/reply/{{this_message.sender_id}}/{{this_message.device_id}}">Reply</a>
+                                <a href="/delete/{{this_message.id}}" >Delete</a>
                             </div>
                         </div>
                         {% endif %}
