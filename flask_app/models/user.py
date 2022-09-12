@@ -33,7 +33,7 @@ class User:
         is_valid = True
         #check to see if email is already in database to avoid creation of new user with same email
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL("user_registration_schema").query_db(query, user_data_from_form)
+        results = connectToMySQL("users_devices").query_db(query, user_data_from_form)
         if len(results) != 0:
             flash("Email already exists in database", "reg") #second argument is category filter. Make sure it matches the category filter name in the HTML doc's section for "get messages"
             is_valid = False

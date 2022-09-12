@@ -19,6 +19,7 @@ class Device:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
+        self.picture_url = None
 
     @staticmethod
     def validate_device(form_data):

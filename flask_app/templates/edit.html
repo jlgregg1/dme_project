@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-6">
                 <h1 style = "margin-bottom: 30px;">Edit Your Device:</h1>
-                <form action = "/edit_in_db/{{this_device.id}}" method = "POST">
+                <form action = "/edit_in_db/{{this_device.id}}" method = "POST" enctype = 'multipart/form-data'>
                     <div class="mb-3">
                         <label for="type" class="form-label">Device Type (select):</label>
                         <select name = 'type' class="form-select" id="type">

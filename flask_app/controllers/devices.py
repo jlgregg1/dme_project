@@ -1,6 +1,17 @@
-from flask import Flask, flash, session, render_template, redirect, request
+from flask import Flask, flash, session, render_template, redirect, request, url_for
 from flask_app import app
 from flask_app.models import user, device, message
+from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField
+from werkzeug.utils import secure_filename
+import os
+from wtforms.validators import InputRequired
+
+app.config['UPLOAD_FOLDER'] = "static/files"
+
+class UploadFileForm(FlaskForm):
+    file = FileField("File", validators = [InputRequired()])
+    submit = SubmitField("Upload File")
 
 @app.route("/learn")
 def learn():
@@ -97,3 +108,13 @@ def remove_from_saved(id):
     }
     device.Device.remove_from_list(data)
     return redirect("/dashboard")
+
+@app.route('/picture', methods = ["GET", "POST"])
+def picture():
+    form = UploadFileForm()
+    if form.validate_on_submit():
+        file = form.file.data
+        file.save(f"/Users/jenniferstewart/Desktop/CodingDojo/projects/dme_project/flask_app/static/files/{secure_filename(file.filename)}")
+        return "File has been uploaded"
+    return render_template('picture.html', form = form)
+

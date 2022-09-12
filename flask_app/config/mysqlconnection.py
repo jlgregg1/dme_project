@@ -8,7 +8,7 @@ class MySQLConnection:
 # change the user and password as needed
         connection = pymysql.connect(host = 'localhost',
                                     user = 'root', 
-                                    password = os.environ.get("DB_PASS"),  #must match mysql workbench
+                                    password = "password123",  #must match mysql workbench
                                     port = 3306,
                                     db = db,
                                     charset = 'utf8mb4',
