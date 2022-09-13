@@ -109,12 +109,18 @@ def remove_from_saved(id):
     device.Device.remove_from_list(data)
     return redirect("/dashboard")
 
-@app.route('/picture', methods = ["GET", "POST"])
-def picture():
+@app.route('/picture/<int:id>', methods = ["GET", "POST"])
+def picture(id):
     form = UploadFileForm()
     if form.validate_on_submit():
         file = form.file.data
         file.save(f"/Users/jenniferstewart/Desktop/CodingDojo/projects/dme_project/flask_app/static/files/{secure_filename(file.filename)}")
+        photo_url = f"/static/files/{secure_filename(file.filename)}"
+        data = {
+            "device_id" : id,
+            "photo_url" : photo_url
+        }
+        device.Device.add_photo_url(data)
         return "File has been uploaded"
     return render_template('picture.html', form = form)
 

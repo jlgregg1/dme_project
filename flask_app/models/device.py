@@ -19,7 +19,7 @@ class Device:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
-        self.picture_url = None
+        self.photo_url = data['photo_url']
 
     @staticmethod
     def validate_device(form_data):
@@ -36,6 +36,11 @@ class Device:
         query = "INSERT INTO devices (type, zip_code, comments, user_id) VALUES (%(type)s, %(zip_code)s, %(comments)s, %(user_id)s);"
         return connectToMySQL(cls.db).query_db(query, data)
     
+    @classmethod
+    def add_photo_url(cls, data):
+        query = "UPDATE devices SET photo_url = %(photo_url)s WHERE id = %(device_id)s;"
+        return connectToMySQL(cls.db).query_db(query, data)
+
     @classmethod
     def view_users_posted_devices(cls, data):
         query = "SELECT * FROM devices WHERE user_id = %(id)s;"
