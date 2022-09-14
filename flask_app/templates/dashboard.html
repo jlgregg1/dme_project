@@ -49,16 +49,20 @@
             <div class="col-6">
                 <h2>Your Donated Devices:</h2>
                 <div>
-                    <ul class = "list-group" style = "list-style-type: None;">
-                        {% for this_device in all_devices %}
-                        <li class = "list-group-item">
-                            <sp>{{this_device.type}}</sp>
-                            <img src = "{{this_device.photo_url}}" alt = "photo of the device that you uploaded">
+                    {% for this_device in all_devices %}
+                    <div class = "card" style = "margin: 10px; padding: 10px; align-items: center;">
+                        {%if this_device.photo_url%}
+                        <img src = "{{this_device.photo_url}}" alt = "photo of the device that you uploaded">
+                        {%else%}
+                        <a href = "/picture/{{this_device.id}}">Add photo</a>
+                        {%endif%}
+                        <div class = "card-body">
+                            <h5 class = "card-title">{{this_device.type}}</h5>
                             <a href = "/delete_device/{{this_device.id}}">Delete</a>
                             <a href = "/edit/{{this_device.id}}">Edit</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-6">

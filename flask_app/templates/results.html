@@ -47,25 +47,21 @@
                 {% if all_device_results | length == 0 %}
                     <p>Your search did not yield any results</p>
                 {% endif %}
-                <ul class = "list-group" style = "list-style-type: None;">
-                    {% for this_device in all_device_results %}
-                        {% if this_device.user_id != session['user_id']%}
-                        <li class = "list-group-item">
-                            <form action = "/add_to_saved_devices/{{this_device.id}}" method = "POST">
-                                <div class = "mb-3">
-                                    <p>Device: {{this_device.type}}</p>
-                                    <p>Location: {{this_device.zip_code}}</p>
-                                    <p>Sizing: {{this_device.comments}}</p>
-                                    <div>
-                                        <img src = {{this_device.photo_url}} alt = "a picture that you uploaded of your device to donate">
-                                    </div>
-                                    <button class = "btn btn-light btn-outline-dark" value = "submit">Save</button>
-                                </div>
-                            </form>
-                        </li>
-                        {%endif%}
-                    {% endfor %}
-                </ul>
+                {% for this_device in all_device_results %}
+                    {% if this_device.user_id != session['user_id']%}
+                    <div class = "card" style = "margin: 10px; padding: 10px; align-items: center;">
+                        <img src = "{{this_device.photo_url}}" alt = "photo of the device that you uploaded">
+                        <div class = "card-body">
+                            <h5 class = "card-title">{{this_device.type}}</h5>
+                            <p>{{this_device.zip_code}}</p>
+                            <p>{{this_device.comments}}</p>
+                        </div>
+                        <form action = "/add_to_saved_devices/{{this_device.id}}" method = "POST">
+                            <button class = "btn btn-light btn-outline-dark" value = "submit">Save</button>
+                        </form>
+                    </div>
+                    {%endif%}
+                {% endfor %}
             </div>
         </div>
     </div>
