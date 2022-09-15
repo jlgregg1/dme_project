@@ -68,16 +68,18 @@
             <div class="col-6">
                 <h2>Your Saved Devices:</h2>
                 <div>
-                    <ul class = "list-group" style = "list-style-type: None;">
+                    <div class = "card" style = "margin: 10px; padding: 10px; align-items: center;">
                         {% for this_device in all_saved_devices %}
-                        <li class = "list-group-item">
-                            <sp>{{this_device.type}}:</sp>
-                            <sp>{{this_device.comments}}</sp>
+                        <div class = "card-body">
+                            <img src = "{{this_device.photo_url}}" alt = "photo of the device that you uploaded">
+                            <h5 class = "card-title">{{this_device.type}}</h5>
+                            <p>Location: {{this_device.zip_code}}</p>
+                            <p>Sizing: {{this_device.comments}}</p>
                             <a href = "/remove/{{this_device.id}}">Remove</a>
                             <a href = "/message/{{this_device.id}}">Send Message</a>
-                        </li>
                         {% endfor %}
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
