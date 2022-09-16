@@ -48,3 +48,7 @@ a {
 .empty{
     display: none;
 }
+
+#received{
+    margin-left: 30px;
+}
