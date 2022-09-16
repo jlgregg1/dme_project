@@ -36,6 +36,19 @@ class Message:
                 this_message_object = cls(this_message_dictionary)
                 message_list.append(this_message_object)
             return message_list
+    
+    @classmethod
+    def get_message_chain(cls, data):
+        query = "SELECT users.first_name AS sender, users2.first_name as recipient, message, messages.id as id, messages.created_at as created_at, messages.updated_at as updated_at, sender_id, recipient_id, device_id FROM users LEFT JOIN messages ON users.id = messages.sender_id LEFT JOIN users as users2 ON users2.id = messages.recipient_id WHERE device_id = %(device_id)s ORDER BY created_at DESC;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) == 0:
+            return []
+        else:
+            message_list = []
+            for this_message_dictionary in results:
+                this_message_object = cls(this_message_dictionary)
+                message_list.append(this_message_object)
+            return message_list
             
     @classmethod
     def delete(cls, data):

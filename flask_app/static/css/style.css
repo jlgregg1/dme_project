@@ -44,3 +44,7 @@ a {
     background-color:black;
     height:5px;
 }
+
+.empty{
+    display: none;
+}

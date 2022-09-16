@@ -19,7 +19,7 @@ def reply(id, id2):
         "id" : id,
         "device_id" : id2
     }
-    return render_template("reply.html", message_recipient = user.User.get_user_by_id(data), this_device = device.Device.get_device_by_id(data), all_messages = message.Message.get_all_received_messages(data))
+    return render_template("reply.html", message_recipient = user.User.get_user_by_id(data), this_device = device.Device.get_device_by_id(data), all_messages = message.Message.get_message_chain(data))
 
 #hidden routes
 @app.route("/add_message_to_db/<int:id>", methods = ["POST"])

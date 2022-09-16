@@ -58,6 +58,8 @@
                         {%endif%}
                         <div class = "card-body">
                             <h5 class = "card-title">{{this_device.type}}</h5>
+                        </div>
+                        <div class = "card-footer">
                             <a href = "/delete_device/{{this_device.id}}">Delete</a>
                             <a href = "/edit/{{this_device.id}}">Edit</a>
                         </div>
@@ -75,16 +77,20 @@
                             <h5 class = "card-title">{{this_device.type}}</h5>
                             <p>Location: {{this_device.zip_code}}</p>
                             <p>Sizing: {{this_device.comments}}</p>
+                        </div>
+                        <div class = "card-footer">
                             <a href = "/remove/{{this_device.id}}">Remove</a>
                             <a href = "/message/{{this_device.id}}">Send Message</a>
-                        {% endfor %}
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-8">
+            <div class="col-12">
+                <div id="bar">
+                </div>
                 <h2>Your Received Messages:</h2>
                 <div>
                     {% for this_message in all_messages %}
@@ -102,9 +108,6 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-            </div>
-            <div class="col-4">
-                <img class = "logo" src = "static/img/logo.png" alt = "cane exchange logo: two canes crossed in the shape of an x with website name text below">
             </div>
         </div>
     </div>

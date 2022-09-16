@@ -43,17 +43,6 @@
     <div class="container" id = "maincontent">
         <div class="row">
             <div class="col-6">
-                <h1>Your sent messages:</h1>
-                {% for this_message in all_messages %}
-                    <div class = "card bg-light my-2">
-                        <div class = "card-body">
-                            <h3 class = "card-title">To {{this_message.recipient}} on {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h3>
-                            <p class = "card-text">{{this_message.message}}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="col-6">
                 <h1>Send Reply to {{message_recipient.first_name}} {{message_recipient.last_name}}</h1>
                 <h3>about {{this_device.type}} in {{this_device.zip_code}}</h3>
                 <form action = "/add_reply_to_db/{{message_recipient.id}}/{{this_device.id}}" method = "POST">
@@ -75,6 +64,23 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
+            <div class="col-6">
+                <h1>Conversation history:</h1>
+                {% for this_message in all_messages %}
+                    {%if this_message.recipient_id == session['user_id'] and this_message.sender_id == message_recipient.id%}
+                    <div class = "card bg-info my-2">
+                    {% elif this_message.recipient_id == message_recipient.id and this_message.sender_id == session['user_id']%}
+                    <div class = "card bg-light my-2">
+                    {%else%}
+                    <div class = "empty">
+                    {%endif%}
+                        <div class = "card-body">
+                            <h3 class = "card-title">From {{this_message.sender}} to {{this_message.recipient}} on {{this_message.created_at.strftime("%m/%d/%y at %H:%M")}}:</h3>
+                            <p class = "card-text">{{this_message.message}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
         </div>
