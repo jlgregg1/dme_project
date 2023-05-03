@@ -13,6 +13,7 @@ class UploadFileForm(FlaskForm):
     file = FileField("File", validators = [InputRequired()])
     submit = SubmitField("Upload File")
 
+#visible routes
 @app.route("/learn")
 def learn():
     if "user_id" not in session: 
